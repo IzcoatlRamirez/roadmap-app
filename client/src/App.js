@@ -5,6 +5,7 @@ import "./App.css";
 
 import SignInOutContainer from "./containers";
 import PageUser from "./pages/pageUser";
+import RoadmapUserPage from "./pages/RoadmapUserPage";
 
 function App() {
   return (
@@ -13,7 +14,7 @@ function App() {
         <Routes>
           <Route path="/" element={<SignInOutContainer />}></Route>
           <Route path="/menu" element={<PageUser />}></Route>
-          {/* aqui van las otras rutas */}
+          <Route path="/roadmap" element={<RoadmapUserPage/>}></Route>
         </Routes>
       </BrowserRouter>
     </AuthProvider>

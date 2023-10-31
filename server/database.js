@@ -59,7 +59,7 @@ class DatabaseManagment {
         const listaMaterias = obtenerMaterias.rows;
         const algoritmoRoadmap = new Roadmap(listaMaterias);
         const roadmap = algoritmoRoadmap.toSeparateRoadmap(cadenaRoadmap);
-        res.send(roadmap);
+        res.send(roadmap)
       }
     } catch (e) {
       res.send(e);

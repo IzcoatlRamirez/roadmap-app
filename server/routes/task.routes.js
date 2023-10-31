@@ -34,7 +34,7 @@ router.get("/api/now", db.getNow);
 
 
 //obtiene el roadmap de un usuario buscando por id , requiere un json --> {"userId" : 1}
-router.get("/api/roadmap", db.getRoadmapUserById);
+router.post("/api/roadmap", db.getRoadmapUserById);
 
 /*
 busca un usuario existente con su email y password , requiere un json --> 
@@ -98,7 +98,7 @@ router.post("/api/setRoadmapUser",db.setRoadmapUser);
   "nameMateria" : "Programacion"
 }
 */
-router.get("/api/getRecomendaciones",db.getRecomendaciones)
+router.post("/api/getRecomendaciones",db.getRecomendaciones)
 
 /*
 Para hacer update del roadmap , primero pedimos todos los datos de las materias
