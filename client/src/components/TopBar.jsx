@@ -12,6 +12,7 @@ function TopBar() {
 
     const [anchorEl, setAnchorEl] = useState(null);
     const [nameUser, setNameUser] = useState("");
+    const [cr,setCr] = useState("");
   
     const handleMenu = (event) => {
       setAnchorEl(event.currentTarget);
@@ -34,6 +35,7 @@ function TopBar() {
   
           const data = response.data;
           setNameUser(data[0].email);
+          setCr(data[0].creditosact)
         } catch (e) {
           console.log(e);
         }
@@ -57,6 +59,7 @@ function TopBar() {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Bienvenido <Typography component="span">{nameUser}</Typography>
           </Typography>
+          <Typography variant="h6" component="span">Creditos actuales:{cr}/274</Typography>
           <div>
             <IconButton
               size="large"

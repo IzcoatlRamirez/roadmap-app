@@ -104,7 +104,7 @@ router.post("/api/getRecomendaciones",db.getRecomendaciones)
 Para hacer update del roadmap , primero pedimos todos los datos de las materias
 requiere un json de la siguiente forma:
 {
-"materias": ['Matematicas Discretas','Programacion','Seminario De Programacion']
+"materias": ["Matematicas Discretas","Programacion","Seminario De Programacion"]
 }
 */
 router.post("/api/materiasRoadmap",db.obtenerMateriasLista)

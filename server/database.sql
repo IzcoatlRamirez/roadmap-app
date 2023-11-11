@@ -18,7 +18,7 @@ CREATE TABLE roadmapp.usuarios(
     id  SERIAL PRIMARY KEY,
     email VARCHAR(255) NOT NULL UNIQUE,
     passwd VARCHAR(255) NOT NULL,
-    roadmap VARCHAR(255), 
+    roadmap VARCHAR(255) , 
     creditosAct INTEGER
 );
 
@@ -226,3 +226,13 @@ INSERT INTO roadmapp.profesores VALUES (101,'Luis Antonio Medellin Serna',37);
 INSERT INTO roadmapp.profesores VALUES (102,'Daniel Omar Landa Horta',37);
 
 INSERT INTO roadmapp.profesores VALUES (103,'####',38);
+
+--cambios--
+
+-- Primero, elimina la columna existente 
+ALTER TABLE roadmapp.usuarios
+DROP COLUMN IF EXISTS roadmap;
+
+-- Luego, agrega la columna con el valor predeterminado
+ALTER TABLE roadmapp.usuarios
+ADD COLUMN roadmap VARCHAR(255) DEFAULT '';

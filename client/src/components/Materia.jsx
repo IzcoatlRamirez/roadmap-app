@@ -6,7 +6,7 @@ import { Dialog, DialogContent } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import DetallesMateria from "./DetallesMateria";
 import axios from 'axios'
-import { orange } from "@mui/material/colors";
+import {pink } from "@mui/material/colors";
 
 function Materia({ nombre, codigo, creditos }) {
   const [profesores, setProfesores] = useState([]);
@@ -58,7 +58,7 @@ function Materia({ nombre, codigo, creditos }) {
       </Box>
       {/* <Divider variant="middle" /> */}
       <Box sx={{ mt: 1, ml: 1 }}>
-        <Button sx={{ color: orange["A400"] }} onClick={handleOpen}>
+        <Button sx={{ color: pink["A400"] }} onClick={handleOpen}>
           <Typography variant="h8">...</Typography>
         </Button>
       </Box>

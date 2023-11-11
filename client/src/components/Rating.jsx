@@ -1,16 +1,16 @@
 
-import FavoriteIcon from '@mui/icons-material/Favorite';
+import StarIcon from '@mui/icons-material/Star';
 import { Box } from '@mui/material';
-import { pink } from '@mui/material/colors';
+import { yellow } from '@mui/material/colors';
 
 function Rating() {
   return (
     <Box sx={{display:'flex',flexDirection:'row'}} >
-        <FavoriteIcon sx={{color:pink['A200']}}></FavoriteIcon>
-        <FavoriteIcon sx={{color:pink['A200']}}></FavoriteIcon>
-        <FavoriteIcon sx={{color:pink['A200']}}></FavoriteIcon>
-        <FavoriteIcon sx={{color:pink['A200']}}></FavoriteIcon>
-        <FavoriteIcon sx={{color:pink['A200']}}></FavoriteIcon>
+        <StarIcon sx={{color:yellow['700']}}></StarIcon>
+        <StarIcon sx={{color:yellow['700']}}></StarIcon>
+        <StarIcon sx={{color:yellow['700']}}></StarIcon>
+        <StarIcon sx={{color:yellow['700']}}></StarIcon>
+        <StarIcon sx={{color:yellow['700']}}></StarIcon>
     </Box>
   )
 }
