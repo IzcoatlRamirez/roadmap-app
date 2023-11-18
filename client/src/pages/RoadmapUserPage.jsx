@@ -11,6 +11,7 @@ import { pink } from "@mui/material/colors";
 function RoadmapUserPage() {
   const [roadmap, setRoadmap] = useState([]);
   const navigate = useNavigate();
+  const api = process.env.REACT_APP_BACKEND_URL || "http://localhost:3000"
 
   const goToMenu = () => {
     navigate("/menu");
@@ -20,7 +21,7 @@ function RoadmapUserPage() {
     const fetchData = async () => {
       const user = sessionStorage.getItem("user");
       try {
-        const response = await axios.post("http://localhost:3000/api/roadmap", {
+        const response = await axios.post(api+"/api/roadmap", {
           userId: user,
         });
 

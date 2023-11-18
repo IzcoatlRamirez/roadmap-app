@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState} from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
@@ -15,8 +15,8 @@ function Materia({ nombre, codigo, creditos }) {
 
   const handleOpen = async() => {
     try {
-      const response = await axios.post(
-        "http://localhost:3000/api/getRecomendaciones",
+      const api = process.env.REACT_APP_BACKEND_URL || "http://localhost:3000"
+      const response = await axios.post(api+"/api/getRecomendaciones",
         {
           nameMateria: nombre,
         }

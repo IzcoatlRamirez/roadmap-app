@@ -37,9 +37,10 @@ function RegisterUserPage() {
   const [formularioContestado, setFormularioContestado] = useState(false);
   const [numeroSemestres, setNumeroSemestres] = useState(0);
 
+  const api = process.env.REACT_APP_BACKEND_URL || "http://localhost:3000"
   useEffect(() => {
     axios
-      .get("http://localhost:3000/api/materias")
+      .get(api+"/api/materias")
       .then((response) => {
         const materiasOrdenadas = response.data; // Supongamos que la API devuelve las materias en orden
         setMaterias(materiasOrdenadas);
@@ -87,9 +88,9 @@ function RegisterUserPage() {
   };
 
   const handleGuardarMaterias = async () => {
-    const apiUrl = "http://localhost:3000/api/materiasRoadmap";
+    const api = process.env.REACT_APP_BACKEND_URL || "http://localhost:3000"
     try {
-      const response = await axios.post(apiUrl, {
+      const response = await axios.post(api+"/api/materiasRoadmap", {
         materias: roadmap,
       });
       const materias = response.data;
@@ -102,10 +103,10 @@ function RegisterUserPage() {
   };
 
   const handleRegister = async (materias) => {
-    const api = "http://localhost:3000/api/setRoadmapUser";
+    const api = process.env.REACT_APP_BACKEND_URL || "http://localhost:3000"
     const user = sessionStorage.getItem("user");
     try {
-      const data = await axios.post(api, {
+      const data = await axios.post(api+"/api/setRoadmapUser", {
         materias: materias,
         semestres: numeroSemestres,
         id: user,

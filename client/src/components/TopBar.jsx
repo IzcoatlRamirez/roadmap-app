@@ -23,13 +23,13 @@ function TopBar() {
     };
   
     // const {user} = useAuth();
-  
+    const api = process.env.REACT_APP_BACKEND_URL || "http://localhost:3000"
   
     useEffect(() => {
       const fetchData = async () => {
         const user = sessionStorage.getItem('user');
         try {
-          const response = await axios.post("http://localhost:3000/api/user", {
+          const response = await axios.post(api+"/api/user", {
             id: user
           });
   

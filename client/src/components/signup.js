@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import PersonAddAlt1Icon from '@mui/icons-material/PersonAddAlt1';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
+import SendIcon from '@mui/icons-material/Send';
+
 import { Formik, Field, Form, ErrorMessage } from 'formik'
 import { FormHelperText } from '@mui/material'
 import * as Yup from 'yup'
@@ -10,9 +12,9 @@ import axios from 'axios'
 
 
 const Signup = () => {
-    const endPointBase = "http://localhost:3000";
+    const endPointBase = process.env.REACT_APP_BACKEND_URL || "http://localhost:3000";
     const crearUsuarioEndpoint = endPointBase + "/api/crearUsuario"
-    const paperStyle = { padding: 20, width: 700, margin: "0 auto" }
+    const paperStyle = { padding: 20, width: 450, margin: "0 auto", backgroundImage: 'radial-gradient(circle, #ddd, #999)' }
     const headerStyle = { margin: 0 }
     const avatarStyle = { backgroundColor: '#41D2F6' }
     const textStyle = { marginBottom: '12px' }
@@ -41,12 +43,26 @@ const Signup = () => {
             .then((response) => {
                 if (response.data.success) {
                     setSuccessMessage("Usuario registrado exitosamente");
+
+                    // Llamar a la ruta de tu backend para enviar el correo de bienvenida
+                    axios.post(endPointBase+'/api/email', {
+                        toMail: values.email,
+                        subject: '¡Bienvenido!',
+                        message: 'Gracias por registrarte a tu ruta personalizada! Bienvenido.'
+                    })
+                        .then((emailResponse) => {
+                            console.log('Correo de bienvenida enviado:', emailResponse);
+                        })
+                        .catch((emailError) => {
+                            console.error('Error al enviar el correo de bienvenida:', emailError);
+                        });
+
                     setErrorMessage("");
                     console.log(response.data);
                     // Recarga la página solo si se crea un nuevo correo
                     setTimeout(() => {
                         window.location.reload();
-                      }, 2000);
+                    }, 2000);
                 } else {
                     setSuccessMessage("");
                     setErrorMessage(response.data.message);
@@ -85,7 +101,7 @@ const Signup = () => {
                             <FormControlLabel control={<Field as={Checkbox} name='terminosYCondiciones' />} label="Acepta los terminos y condiciones" />
                             <FormHelperText><ErrorMessage name="terminosYCondiciones" /></FormHelperText>
 
-                            <Button type='submit' color='primary' variant="contained" disabled={props.isSubmitting} style={btnstyle} fullWidth >{props.isSubmitting ? "Cargando" : "Registrarse"}</Button>
+                            <Button type='submit' color='primary' variant="contained" endIcon={<SendIcon />} disabled={props.isSubmitting} style={btnstyle} fullWidth >{props.isSubmitting ? "Cargando" : "Registrarse"}</Button>
 
                         </Form>
                     )}
