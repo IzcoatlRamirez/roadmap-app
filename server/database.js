@@ -1,6 +1,8 @@
+require('dotenv').config();
+
 const { Pool } = require("pg");
 const Roadmap = require("./roadmap");
-require('dotenv').config();
+
 
 class DatabaseManagment {
   constructor() {
